@@ -1,8 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response, jsonify
 import sys
 import mysql.connector
 import datetime
 import bus_scr
+import json
 
 def editDB(query, pattern):
     host_ = "localhost"
@@ -40,15 +41,27 @@ def hm_inc():
 def hm_dec():
     result = editDB("SELECT people FROM hm_people", "get")
     people = result[0]["people"]
-    if people >= 0:
+    if people > 0:
         people -= 1
+    elif people < 0:
+        people = 0
     editDB("UPDATE hm_people SET people=" + str(people) + " WHERE id=1","set")
     return str(people)
 
+@app.route('/hm/people/now/')
+def hm_now():
+    result = editDB("SELECT people FROM hm_people","get")
+    people = result[0]["people"]
+    response = make_response(str(people))
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 @app.route('/hm/timetable/')
 def hm_timetable():
-    scr = bus_scr.scr
-    return str(bus_scr.scr())
+    scr = bus_scr.scr()
+    print(scr)
+    #$return json.dumps(scr)
+    return jsonify(scr)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

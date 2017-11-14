@@ -1,0 +1,21 @@
+html,body{
+    height: 100%;
+    text-align: center;
+}
+#ctl{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#inc,#dec{
+    display: inline-block;
+    background-color: #454545;
+    width: 200px;
+    height: 70px;
+    color: #FFF;
+    text-align: center;
+    font-size: 45px;
+    margin:15px ;
+}
