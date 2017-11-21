@@ -59,7 +59,7 @@ def hm_now():
 @app.route('/hm/timetable/')
 def hm_timetable():
     scr = bus_scr.scr()
-    print(scr)
+    print(jsonify(scr))
     #$return json.dumps(scr)
     return jsonify(scr)
 

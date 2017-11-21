@@ -11,7 +11,7 @@ def scr():
     res = soup.find("table").find("tbody").findAll("tr")
     array = []
     final = []
-    jsonDict = collections.OrderedDict()
+    bus = []
     counter = 0
 
     for i in res:
@@ -37,11 +37,13 @@ def scr():
             data["Station"] = "Shuttle"
             data["CampusEnd"] = "Shuttle"
 
-        jsonDict["bus" + str(counter)] = data
+        bus.append(data)
 
     counter = 0
     #print(json.dumps(jsonDict)) #debug
-    return json.dumps(jsonDict)
+    fValue = collections.OrderedDict()
+    fValue["Bus"] = bus
+    return fValue
 
 if __name__ == "__main__":
     scr()
