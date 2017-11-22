@@ -29,6 +29,9 @@ def hello():
     name = "BUS API!!!!!!"
     return name
 
+@app.route('/hm/people/count/')
+def count():
+    return render_template('bus_count.html',titlename="count")
 @app.route('/hm/people/inc/')   #++
 def hm_inc():
     result = editDB("SELECT people FROM hm_people","get")

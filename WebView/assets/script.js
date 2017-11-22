@@ -1,4 +1,4 @@
-let url = "http://192.168.1.6:5000"
+let url = "http://10.201.31.74:5000"
 
 $("#dec").click(function(){
     const request = new XMLHttpRequest();

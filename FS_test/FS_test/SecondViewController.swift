@@ -14,7 +14,7 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var hmNextTime: UILabel!
     @IBOutlet weak var hmWaitTime: UILabel!
     
-    let apiUrl = "http://192.168.1.6:5000/hm/timetable/"
+    let apiUrl = "http://10.201.31.74:5000/hm/timetable/"
     let date = Date()
     let calendar = Calendar.current
     

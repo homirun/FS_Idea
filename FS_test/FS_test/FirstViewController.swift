@@ -11,7 +11,7 @@ import SwiftyJSON
 import Alamofire
 class FirstViewController: UIViewController {
     //var items: [JSON] = []
-    let apiUrl = "http://192.168.1.6:5000/hm/people/now"
+    let apiUrl = "http://10.201.31.74:5000/hm/people/now"
     @IBOutlet weak var waitPeople: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
