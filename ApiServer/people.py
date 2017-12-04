@@ -61,7 +61,21 @@ def hm_now():
 
 @app.route('/hm/timetable/')
 def hm_timetable():
-    scr = bus_scr.scr()
+    scr = bus_scr.hmScr()
+    print(jsonify(scr))
+    #$return json.dumps(scr)
+    return jsonify(scr)
+
+@app.route('/h/timetable/')
+def h_timetable():
+    scr = bus_scr.hScr()
+    print(jsonify(scr))
+    #$return json.dumps(scr)
+    return jsonify(scr)
+
+@app.route('/gk/timetable/')
+def gs_timetable():
+    scr = bus_scr.gkScr()
     print(jsonify(scr))
     #$return json.dumps(scr)
     return jsonify(scr)
