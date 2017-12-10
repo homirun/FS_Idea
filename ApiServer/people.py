@@ -5,6 +5,8 @@ import datetime
 import bus_scr
 import json
 
+app = Flask(__name__)
+
 def editDB(query, pattern):
     host_ = "localhost"
     data_base = "FS_test"
@@ -22,17 +24,15 @@ def editDB(query, pattern):
     if pattern == "get":
         return result
 
-app = Flask(__name__)
-
 @app.route('/')
 def hello():
     name = "BUS API!!!!!!"
     return name
 
-@app.route('/hm/people/count/')
+@app.route('/people/count/hm/')
 def count():
     return render_template('bus_count.html',titlename="count")
-@app.route('/hm/people/inc/')   #++
+@app.route('/people/inc/hm/')   #++
 def hm_inc():
     result = editDB("SELECT people FROM hm_people","get")
     people = result[0]["people"]
@@ -40,7 +40,7 @@ def hm_inc():
     editDB("UPDATE hm_people SET people=" + str(people) + " WHERE id=1","set")
     return str(people)
 
-@app.route('/hm/people/dec/')   #--
+@app.route('/people/dec/hm')   #--
 def hm_dec():
     result = editDB("SELECT people FROM hm_people", "get")
     people = result[0]["people"]
@@ -51,7 +51,7 @@ def hm_dec():
     editDB("UPDATE hm_people SET people=" + str(people) + " WHERE id=1","set")
     return str(people)
 
-@app.route('/hm/people/now/')
+@app.route('/people/now/hm/')
 def hm_now():
     result = editDB("SELECT people FROM hm_people","get")
     people = result[0]["people"]
@@ -59,25 +59,19 @@ def hm_now():
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
-@app.route('/hm/timetable/')
+@app.route('/timetable/hm/')
 def hm_timetable():
-    scr = bus_scr.hmScr()
-    print(jsonify(scr))
-    #$return json.dumps(scr)
+    scr = bus_scr.getTimeTable("hm")
     return jsonify(scr)
 
-@app.route('/h/timetable/')
+@app.route('/timetable/h/')
 def h_timetable():
-    scr = bus_scr.hScr()
-    print(jsonify(scr))
-    #$return json.dumps(scr)
+    scr = bus_scr.getTimeTable("h")
     return jsonify(scr)
 
-@app.route('/gk/timetable/')
+@app.route('/timetable/gk/')
 def gs_timetable():
-    scr = bus_scr.gkScr()
-    print(jsonify(scr))
-    #$return json.dumps(scr)
+    scr = bus_scr.getTimeTable("gk")
     return jsonify(scr)
 
 if __name__ == "__main__":
