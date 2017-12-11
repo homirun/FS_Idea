@@ -1,0 +1,39 @@
+FORMAT: 1A
+HOST: http://api.homirun.pw
+
+# 某大学の学バスAPI
+
+## 各駅発車のバスの時刻表をJSONで返す [/timetable]
+
+### GET /timetable/hm
+八王子みなみ野駅発の時刻表を返します。
+
++ Response 200 (application/json)
+    + Attributes
+        + Bus (array)
+            + (object)
+                + Campus: 07:21 (string) - キャンパスの発車時間(シャトル運行中はShuttle)
+                + Station: 07:28 (string) - 八王子みなみ野駅の発車時間(シャトル運行中はShuttle)
+                + CampusEnd: 07:38 (string) - キャンパスの到着時間(シャトル運行中はShuttle)
+
+### GET /timetable/h
+八王子駅発の時刻表を返します。
+
++ Response 200 (application/json)
+    + Attributes
+        + Bus (array)
+            + (object)
+                + Campus: 07:18 (string) - キャンパスの発車時間(シャトル運行中はShuttle)
+                + Station: 07:30 (string) - 八王子駅の発車時間(シャトル運行中はShuttle)
+                + CampusEnd: 07:48 (string) - キャンパスの到着時間(シャトル運行中はShuttle)
+
+### GET /timetable/gk
+学生会館発の時刻表を返します。
+
++ Response 200 (application/json)
+    + Attributes
+        + Bus (array)
+            + (object)
+                + Campus: 08:08 (string) - キャンパスの発車時間(シャトル運行中はShuttle)
+                + Station: 08:14 (string) - 学生会館の発車時間(シャトル運行中はShuttle)
+                + CampusEnd: 08:20 (string) - キャンパスの到着時間(シャトル運行中はShuttle)
