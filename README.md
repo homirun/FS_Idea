@@ -7,4 +7,4 @@
 - イケイケなUI💃
 - カウンターは今のところHTML/CSS/JSで実装しているがもしかしたらSwiftになるかも📱
 ## API Documents
-- 👷準備中👷
+- https://api.homirun.pw/
